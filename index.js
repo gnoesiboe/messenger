@@ -5,6 +5,18 @@ var dbConnection = require('mysql').createConnection({
     database: 'messenger'
 });
 
+/*
+ CREATE TABLE `message` (
+ `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+ `account_id` int(10) unsigned NOT NULL DEFAULT '1',
+ `type` enum('success','error','warning') NOT NULL DEFAULT 'success',
+ `message` varchar(255) DEFAULT NULL,
+ `created_at` datetime NOT NULL,
+ `delivered_at` datetime DEFAULT NULL,
+ PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+ */
+
 var MessageRepository = require('./app/repository/messageRepository'),
     logger = require('./app/service/logger'),
     io = require('socket.io')(3000);
